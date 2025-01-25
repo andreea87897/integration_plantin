@@ -133,6 +133,8 @@ const textScrollAnimation = () => {
   });
 
 
+
+
 }
 
 const shakeText = () => {
@@ -208,8 +210,8 @@ const interactionLanguage = () => {
 const stampGame = () => {
   const canvas = document.getElementById("gameCanvas");
   const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.width = 800;
+  canvas.height = 600;
 
   const stampImage = new Image();
   stampImage.src = 'src/assets/stamp.png';
@@ -242,7 +244,13 @@ const stampGame = () => {
       drawStamps();
     }
   });
-
+  canvas.addEventListener("touchstart", function (event) {
+    const touch = event.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    addStamp(x, y);
+  });
 
 }
 

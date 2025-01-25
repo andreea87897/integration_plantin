@@ -41,10 +41,22 @@ body {
 }
 
 canvas {
-  background-color: pink;
+  background-image: url("./assets/old-book-open-dark-wood-background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: block;
+  margin: 0 auto;
+  width: 550px;
+}
+
+@media screen and (min-width: 60em) {
+  canvas {
+    width: 60%;
+  }
 
 }
+
 
 .hero_image {
   background-image: url("./assets/phone_responsive.png");
