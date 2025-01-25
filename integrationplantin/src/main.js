@@ -4,6 +4,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 
+
 const textScrollAnimation = () => {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -204,10 +205,52 @@ const interactionLanguage = () => {
   });
 }
 
+const stampGame = () => {
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const stampImage = new Image();
+  stampImage.src = 'src/assets/stamp.png';
+
+  let imageLoaded = false;
+
+  stampImage.onload = function () {
+    imageLoaded = true;
+  };
+
+  const stamps = [];
+
+  function drawStamps() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stamps.forEach(({ x, y, rotation }) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      ctx.drawImage(stampImage, -stampImage.width / 2, -stampImage.height / 2);
+      ctx.restore();
+    });
+  }
+
+  document.addEventListener("keydown", function (event) {
+    if (event.code === "Enter" && imageLoaded) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const rotation = Math.random() * Math.PI * 2;
+      stamps.push({ x, y, rotation });
+      drawStamps();
+    }
+  });
+
+
+}
+
 const init = () => {
   textScrollAnimation();
   shakeText();
   interactionLanguage();
+  stampGame();
 }
 
 init();
