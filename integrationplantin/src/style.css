@@ -40,7 +40,7 @@ body {
   margin-left: 8em;
 }
 
-canvas {
+/* canvas {
   background-image: url("./assets/old-book-open-dark-wood-background.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -48,7 +48,7 @@ canvas {
   display: block;
   margin: 0 auto;
   width: 550px;
-}
+} */
 
 @media screen and (min-width: 60em) {
   canvas {
