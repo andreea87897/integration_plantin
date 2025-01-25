@@ -183,11 +183,31 @@ const shakeText = () => {
 
 }
 
+const interactionLanguage = () => {
+  const feedback = document.getElementById('feedback');
+  const buttons = document.querySelectorAll('.buttons button');
 
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+
+      buttons.forEach(btn => btn.style.backgroundColor = '');
+
+      if (button.id === 'latin') {
+        button.style.backgroundColor = 'green';
+        feedback.textContent = "Wow, you're an expert already!";
+      } else {
+        button.style.backgroundColor = 'red';
+        feedback.textContent = "Hmmmm, are you sure?";
+      }
+    });
+  });
+}
 
 const init = () => {
   textScrollAnimation();
   shakeText();
+  interactionLanguage();
 }
 
 init();
